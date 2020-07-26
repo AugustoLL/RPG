@@ -109,7 +109,7 @@ func move(inputVector: Vector2, delta: float, isIdle := true):
 	else:
 		#velocity = inputVector * MAX_SPEED
 		velocity = velocity.move_toward(inputVector * MAX_SPEED, ACCELERATION * delta)
-		
+
 
 func _on_Hurtbox_area_entered(area):
 	stats.health -= area.damage

@@ -18,6 +18,39 @@ shader_param/active = false
 radius = 4.35274
 height = 4.56232
 
+[sub_resource type="Animation" id=19]
+resource_name = "Start"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "Stop"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [sub_resource type="Animation" id=3]
 length = 0.4
 tracks/0/type = "value"
@@ -586,39 +619,6 @@ tracks/0/keys = {
 "values": [ 7, 8, 9, 10, 11, 6 ]
 }
 
-[sub_resource type="Animation" id=19]
-resource_name = "Start"
-length = 0.2
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:material:shader_param/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-
-[sub_resource type="Animation" id=20]
-resource_name = "Stop"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:material:shader_param/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
 [sub_resource type="AnimationNodeAnimation" id=21]
 animation = "AttackDown"
 
@@ -742,6 +742,7 @@ states/Run/node = SubResource( 40 )
 states/Run/position = Vector2( 593, 89 )
 transitions = [ "Idle", "Run", SubResource( 41 ), "Run", "Idle", SubResource( 42 ), "Idle", "Attack", SubResource( 43 ), "Attack", "Idle", SubResource( 44 ), "Roll", "Idle", SubResource( 45 ), "Idle", "Roll", SubResource( 46 ) ]
 start_node = "Idle"
+graph_offset = Vector2( -171.853, 0 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=48]
 
@@ -762,15 +763,19 @@ texture = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 1 )
-position = Vector2( 0, -9 )
+position = Vector2( 0.52907, -8.88088 )
 texture = ExtResource( 2 )
 hframes = 60
-frame = 18
+frame = 36
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 rotation = -1.5708
 shape = SubResource( 2 )
+
+[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Start = SubResource( 19 )
+anims/Stop = SubResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/AttackDown = SubResource( 3 )
@@ -790,10 +795,6 @@ anims/RunLeft = SubResource( 16 )
 anims/RunRight = SubResource( 17 )
 anims/RunUp = SubResource( 18 )
 
-[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Start = SubResource( 19 )
-anims/Stop = SubResource( 20 )
-
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 47 )
 anim_player = NodePath("../AnimationPlayer")
@@ -809,7 +810,7 @@ __meta__ = {
 [node name="HitboxPivot" type="Position2D" parent="."]
 visible = false
 position = Vector2( 0, -4 )
-rotation = 4.71239
+rotation = 1.5708
 __meta__ = {
 "_gizmo_extents_": 8.0
 }
@@ -825,7 +826,6 @@ shape = SubResource( 49 )
 disabled = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 5 )]
-visible = false
 collision_layer = 4
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
