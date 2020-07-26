@@ -1,0 +1,320 @@
+[gd_scene load_steps=58 format=2]
+
+[ext_resource path="res://Enemies/samurai/Idle.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/samurai/Attack1.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/samurai/Run.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/samurai/Attack2.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/samurai/Death.png" type="Texture" id=5]
+[ext_resource path="res://Enemies/samurai/Take Hit - white silhouette.png" type="Texture" id=6]
+[ext_resource path="res://Enemies/Samurai.gd" type="Script" id=7]
+[ext_resource path="res://Enemies/WanderController.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Stats.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/PlayerDetectionArea.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Overlap/Hurtbox.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Overlap/SoftCollision.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Shadows/SmallShadow.png" type="Texture" id=14]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 200, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 400, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 600, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 800, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 1000, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 1200, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 1400, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 3 )
+region = Rect2( 200, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 400, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 3 )
+region = Rect2( 600, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 3 )
+region = Rect2( 800, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 3 )
+region = Rect2( 1000, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 3 )
+region = Rect2( 1200, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 3 )
+region = Rect2( 1400, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 6 )
+region = Rect2( 200, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 6 )
+region = Rect2( 400, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 6 )
+region = Rect2( 600, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 4 )
+region = Rect2( 200, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 4 )
+region = Rect2( 400, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 4 )
+region = Rect2( 600, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 4 )
+region = Rect2( 800, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 4 )
+region = Rect2( 1000, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 2 )
+region = Rect2( 200, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 2 )
+region = Rect2( 400, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 2 )
+region = Rect2( 600, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 2 )
+region = Rect2( 800, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 2 )
+region = Rect2( 1000, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 5 )
+region = Rect2( 200, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 5 )
+region = Rect2( 400, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 5 )
+region = Rect2( 600, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 5 )
+region = Rect2( 800, 0, 200, 200 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 5 )
+region = Rect2( 1000, 0, 200, 200 )
+
+[sub_resource type="SpriteFrames" id=39]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 9.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "Run",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"loop": false,
+"name": "Hit",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": false,
+"name": "Attack2",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
+"loop": false,
+"name": "Attack",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ) ],
+"loop": false,
+"name": "Die",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=40]
+radius = 157.871
+
+[sub_resource type="CapsuleShape2D" id=41]
+radius = 5.83415
+height = 8.40465
+
+[sub_resource type="CapsuleShape2D" id=42]
+radius = 26.2923
+height = 42.5496
+
+[sub_resource type="CircleShape2D" id=43]
+radius = 12.0908
+
+[node name="SamuraiBoss" type="KinematicBody2D"]
+position = Vector2( -0.094471, -0.326151 )
+collision_layer = 16
+collision_mask = 3
+script = ExtResource( 7 )
+MAX_SPEED = 100
+FRICTION = 300
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.225939, -21.437 )
+frames = SubResource( 39 )
+animation = "Idle"
+frame = 1
+playing = true
+
+[node name="ShadowSprite" type="Sprite" parent="."]
+position = Vector2( -1.90735e-06, 0 )
+scale = Vector2( 2.82867, 1 )
+texture = ExtResource( 14 )
+
+[node name="PlayerDetectionArea" parent="." instance=ExtResource( 10 )]
+
+[node name="CollisionShape2D" parent="PlayerDetectionArea" index="0"]
+modulate = Color( 0.854902, 0.0784314, 0.172549, 1 )
+position = Vector2( 62.1272, 0.611431 )
+rotation = 1.5708
+shape = SubResource( 40 )
+
+[node name="WanderController" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="Stats" parent="." instance=ExtResource( 9 )]
+maxHealth = 10
+
+[node name="SoftCollision" parent="." instance=ExtResource( 13 )]
+visible = false
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+position = Vector2( 0.184254, -5.31274 )
+rotation = 1.5708
+shape = SubResource( 41 )
+
+[node name="HitboxPivot" type="Position2D" parent="."]
+visible = false
+position = Vector2( 0.149891, -21.1347 )
+
+[node name="Hitbox" parent="HitboxPivot" instance=ExtResource( 11 )]
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HitboxPivot/Hitbox" index="0"]
+modulate = Color( 0.121569, 0.4, 0.831373, 1 )
+position = Vector2( 41.5779, -10.7685 )
+rotation = 1.5708
+shape = SubResource( 42 )
+
+[node name="HitboxRange" type="Position2D" parent="."]
+position = Vector2( 0.149891, -21.1347 )
+
+[node name="HitboxRange" parent="HitboxRange" instance=ExtResource( 11 )]
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HitboxRange/HitboxRange" index="0"]
+modulate = Color( 0.337255, 0.756863, 0.0784314, 1 )
+self_modulate = Color( 0.631373, 0.0705882, 0.0705882, 1 )
+position = Vector2( 41.5779, -10.7685 )
+rotation = 1.5708
+shape = SubResource( 42 )
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( -0.225937, -21.2381 )
+polygon = PoolVector2Array( -12.574, 21.336, -10.1319, 15.4441, -4.73293, 12.0284, 1.10681, 10.7062, 9.70115, 10.4859, 11.7045, 13.5895, 11.4211, 21.336 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 12 )]
+visible = false
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+modulate = Color( 0.0837, 0.93, 0.22475, 1 )
+position = Vector2( -0.142395, -9.54056 )
+shape = SubResource( 43 )
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
+[connection signal="noHealth" from="Stats" to="." method="_on_Stats_noHealth"]
+[connection signal="body_entered" from="HitboxPivot/Hitbox" to="HitboxPivot/Hitbox" method="_on_Hitbox_body_entered"]
+[connection signal="body_exited" from="HitboxPivot/Hitbox" to="HitboxPivot/Hitbox" method="_on_Hitbox_body_exited"]
+[connection signal="body_entered" from="HitboxRange/HitboxRange" to="HitboxRange/HitboxRange" method="_on_Hitbox_body_entered"]
+[connection signal="body_exited" from="HitboxRange/HitboxRange" to="HitboxRange/HitboxRange" method="_on_Hitbox_body_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
+[connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]
+
+[editable path="PlayerDetectionArea"]
+
+[editable path="WanderController"]
+
+[editable path="SoftCollision"]
+
+[editable path="HitboxPivot/Hitbox"]
+
+[editable path="HitboxRange/HitboxRange"]
+
+[editable path="Hurtbox"]

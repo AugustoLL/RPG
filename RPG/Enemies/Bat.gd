@@ -27,37 +27,57 @@ onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 func _ready():
 	state = pickRandomState([IDLE, WANDER])
 
+
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
 	knockback = move_and_slide(knockback)
 	
 	match state:
 		IDLE:
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-			seekPlayer()
-			if wanderController.getTimeLeft() == 0:
-				pickRandomStateStartWanderTimer()
+			idleState(delta)
+		
 		WANDER:
-			seekPlayer()
-			if wanderController.getTimeLeft() == 0:
-				pickRandomStateStartWanderTimer()
-			accelerateTowardsPoint(wanderController.targetPosition, delta)
-
-			var wanderTargetRange = int(round(global_position.distance_to(wanderController.targetPosition)))
-			if  wanderTargetRange <= 4:
-				pickRandomStateStartWanderTimer()
+			wanderState(delta)
+		
 		CHASE:
-			var player = playerDetectionArea.player
-			if player != null:
-				#Get the vector between us and the player
-				accelerateTowardsPoint(player.global_position, delta)
-			else:
-				state = IDLE
-			sprite.flip_h = velocity.x < 0 
+			chaseState(delta)
 	
+	checkForCollisions(delta)
+
+
+
+
+func idleState(delta):
+	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	seekPlayer()
+	if wanderController.getTimeLeft() == 0:
+		pickRandomStateStartWanderTimer()
+
+func wanderState(delta):
+	seekPlayer()
+	if wanderController.getTimeLeft() == 0:
+		pickRandomStateStartWanderTimer()
+	accelerateTowardsPoint(wanderController.targetPosition, delta)
+
+	var wanderTargetRange = int(round(global_position.distance_to(wanderController.targetPosition)))
+	if  wanderTargetRange <= 4:
+		pickRandomStateStartWanderTimer()
+
+func chaseState(delta):
+	var player = playerDetectionArea.player
+	if player != null:
+		#Get the vector between us and the player
+		accelerateTowardsPoint(player.global_position, delta)
+	else:
+		state = IDLE
+	sprite.flip_h = velocity.x < 0
+
+func checkForCollisions(delta):
 	if softCollision.isColliding():
 		velocity += softCollision.getPushVector() * delta * 400
 	velocity = move_and_slide(velocity)
+
+
 
 
 func pickRandomStateStartWanderTimer():
